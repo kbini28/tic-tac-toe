@@ -39,7 +39,7 @@ const signOutSuccess = function () {
 
 const signOutFailure = function () {
   $('form').trigger('reset')
-  $('#message').text('Sign out failed. You are stuck here with us!').show()
+  $('#message').text('Sign out failed. You are stuck here with us!').show
 }
 
 module.exports = {

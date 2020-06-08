@@ -21,7 +21,7 @@ const onSignIn = function (event) {
 
   api.signIn(data)
     .then(ui.signInSuccess)
-    .catch(ui.SignInFailure)
+    .catch(ui.signInFailure)
 }
 
 const onChangePass = function (event) {
