@@ -12,6 +12,38 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
-      <h1>Browser Template</h1>
+      <h1>My Tic-Tac-Toe Board</h1>
+      <p id="message"></p>
+
+      <section id="logged-out-view">
+        <h2>Welcome to Tic-Tac-Toe!</h2>
+        <form id="sign-up">
+          <h3>Sign up below:</h3>
+          <input type="email" name="credentials[email]" required placeholder="Email">
+          <input type="password" name="credentials[password]" required placeholder="Password">
+          <input type="password" name="credentials[password_confirmation]" required placeholder="Confirm Password">
+          <button type="submit">Submit</button>
+        </form>
+        <form id="sign-in">
+          <h3>Or sign in over here:</h3>
+          <input type="email" name="credentials[email]" required placeholder="Email">
+          <input type="password" name="credentials[password]" required placeholder="Password">
+          <button type="submit">Submit</button>
+        </form>
+      </section>
+
+      <main>
+        <section id="logged-in-view">
+          <form id="change-password">
+            <h3>Change your password:</h3>
+            <input type="password" name="passwords[old]" required placeholder="Old Password">
+            <input type="password" name="passwords[new]" required placeholder="New Password">
+            <button type="submit">Change Password</button>
+          </form>
+          <div id="sign-out">
+            <button>Sign Out</button>
+          </div>
+        </section>
+      </main>
     </body>
 </html>
