@@ -2,6 +2,7 @@ const store = require('./../store')
 
 const newGameSuccess = function (response) {
   $('#game-board').trigger('reset')
+  $('.box').text('')
   $('.hide-game').removeClass('hide-game')
   $('#message').text('Good luck!').show().delay(5000).fadeOut()
   store.game = response.game
