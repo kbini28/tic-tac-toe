@@ -8,20 +8,40 @@ const newGameSuccess = function (response) {
 }
 
 const newGameFailure = function () {
-  $('#message').text('New game failed to load. Try again!')
+  $('#message').text('New game failed to load. Try again!').show()
 }
 
-const updateMovesSuccess = function (response) {
-  // $(event.target).on('click', 'x')
+const gameIndexSuccess = function (response) {
+  let gameIndexHtml = ''
+  response.games.forEach(game => {
+    const oneGame = (`
+      <h4>Game</h4>
+      <br>
+      `)
+    gameIndexHtml += oneGame
+  })
+
+  $('game-index').html(gameIndexHtml)
+  console.log(gameIndexHtml)
 }
 
-const updateMovesFailure = function () {
-  $('#message').text('Invalid Move')
+const gameIndexFailure = function () {
+  $('#message').text('Game index failed to load.').show()
+}
+
+const updateGameSuccess = function (event) {
+  $(event.target).on('click').text('x')
+}
+
+const updateGameFailure = function () {
+  $('#message').text('Invalid Move').show().removeClass().addClass('failure')
 }
 
 module.exports = {
   newGameSuccess,
   newGameFailure,
-  updateMovesSuccess,
-  updateMovesFailure
+  updateGameSuccess,
+  updateGameFailure,
+  gameIndexSuccess,
+  gameIndexFailure
 }

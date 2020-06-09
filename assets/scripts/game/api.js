@@ -13,20 +13,31 @@ const newGame = function (data) {
   })
 }
 
-const updateMoves = function (data) {
+const gameIndex = function (data) {
+  return $.ajax({
+    method: 'GET',
+    url: config.apiUrl + '/games',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: data
+  })
+}
+
+const updateGame = function (data) {
   return $.ajax({
     method: 'PATCH',
-    url: config.apiUrl + '/games',
+    url: config.apiUrl + '/games' + store.game._id,
     headers: {
       Authorization: 'Token token=' + store.user.token
     },
     data: {
       game: {
         cell: {
-          index: '',
-          value: ''
+          index: data,
+          value: data
         },
-        over: false
+        over: data
       }
     }
   })
@@ -34,5 +45,6 @@ const updateMoves = function (data) {
 
 module.exports = {
   newGame,
-  updateMoves
+  gameIndex,
+  updateGame
 }
