@@ -12,28 +12,29 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
-      <h1>My Tic-Tac-Toe Board</h1>
-      <p id="message"></p>
+      <div class="col-12 display-message">
+      <p id="message"> </p>
+      </div>
 
       <section id="logged-out-view">
-        <h2>Welcome to Tic-Tac-Toe!</h2>
+        <h1>Welcome to Tic-Tac-Toe!</h1>
         <form id="sign-up">
-          <h3>Sign up below:</h3>
+          <h2>Sign up below:</h2>
           <input type="email" name="credentials[email]" required placeholder="Email">
           <input type="password" name="credentials[password]" required placeholder="Password">
           <input type="password" name="credentials[password_confirmation]" required placeholder="Confirm Password">
           <button type="submit">Submit</button>
         </form>
         <form id="sign-in">
-          <h3>Or sign in over here:</h3>
+          <h2>Or sign in over here:</h2>
           <input type="email" name="credentials[email]" required placeholder="Email">
           <input type="password" name="credentials[password]" required placeholder="Password">
           <button type="submit">Submit</button>
         </form>
       </section>
 
-      <main class="hidden">
-        <section id="logged-in-view">
+      <main>
+        <section id="logged-in-view" class="hidden">
           <form id="change-password">
             <h3>Change your password:</h3>
             <input type="password" name="passwords[old]" required placeholder="Old Password">
@@ -44,9 +45,23 @@
             <button>Sign Out</button>
           </div>
         </section>
-        <div id="new-game">
+        <div id="new-game" class="hidden">
           <button type="submit">New Game!</button>
         </div>
+        <!-- does this ^ need to be a form? -->
+        <section id="game-board" class="hide-game container">
+          <div class="row">
+            <div id="1" class="col-4 box" data-index="0"></div>
+            <div id="2" class="col-4 box border-left border-right" data-index="1"></div>
+            <div id="3" class="col-4 box" data-index="2"></div>
+            <div id="4" class="col-4 box border-top border-bottom" data-index="3"></div>
+            <div id="5" class="col-4 box border" data-index="4"></div>
+            <div id="6" class="col-4 box border-top border-bottom" data-index="5"></div>
+            <div id="7" class="col-4 box" data-index="6"></div>
+            <div id="8" class="col-4 box border-left border-right" data-index="7"></div>
+            <div id="9" class="col-4 box" data-index="8"></div>
+          </div>
+        </section>
       </main>
     </body>
 </html>
