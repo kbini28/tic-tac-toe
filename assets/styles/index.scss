@@ -4,6 +4,17 @@ body {
   background: #CFFCF4;
 }
 
+button {
+  background: #687E7A;
+  font-color: #9BBDB7;
+}
+
+.display-message {
+  position: fixed;
+  top: 10px;
+  font-size: 20px;
+}
+
 .failure {
   color: red;
   text-align: center;
@@ -18,27 +29,47 @@ body {
   display: none;
 }
 
+input {
+  padding: 2px;
+  margin: 2px;
+  border: 2px solid #9BBDB7;
+}
+
 #logged-out-view {
   margin-top: 150px;
   text-align: center;
-  &sign-up {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-  }
-  &sign-in {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-  }
+}
+
+#logged-in-view {
+  margin-top: 50px;
 }
 
 .row {
   background: lightblue;
   text-align: center;
   height: 200px;
+}
+
+// .two-column-flex {
+//   display: flex;
+//   flex-direction: column;
+//   flex-basis: 30%;
+//   flex: 1;
+// }
+#sign-up {
+  display: flex;
+  flex-direction: column;
+  float: left;
+  width: 30%;
+  margin-left: 10%;
+}
+
+#sign-in {
+  display: flex;
+  flex-direction: column;
+  float: right;
+  width: 30%;
+  margin-right: 10%;
 }
 
 .success {

@@ -18,19 +18,21 @@
 
       <section id="logged-out-view">
         <h1>Welcome to Tic-Tac-Toe!</h1>
-        <form id="sign-up">
-          <h2>Sign up below:</h2>
-          <input type="email" name="credentials[email]" required placeholder="Email">
-          <input type="password" name="credentials[password]" required placeholder="Password">
-          <input type="password" name="credentials[password_confirmation]" required placeholder="Confirm Password">
-          <button type="submit">Submit</button>
-        </form>
-        <form id="sign-in">
-          <h2>Or sign in over here:</h2>
-          <input type="email" name="credentials[email]" required placeholder="Email">
-          <input type="password" name="credentials[password]" required placeholder="Password">
-          <button type="submit">Submit</button>
-        </form>
+        <div class="two-column-flex">
+          <form id="sign-up">
+            <h2>Sign up below:</h2>
+            <input type="email" name="credentials[email]" required placeholder="Email">
+            <input type="password" name="credentials[password]" required placeholder="Password">
+            <input type="password" name="credentials[password_confirmation]" required placeholder="Confirm Password">
+            <button type="submit">Submit</button>
+          </form>
+          <form id="sign-in">
+            <h2>Or sign in over here:</h2>
+            <input type="email" name="credentials[email]" required placeholder="Email">
+            <input type="password" name="credentials[password]" required placeholder="Password">
+            <button type="submit">Submit</button>
+          </form>
+        </div>
       </section>
 
       <main>

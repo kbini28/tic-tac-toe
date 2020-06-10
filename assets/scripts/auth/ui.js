@@ -2,7 +2,7 @@ const store = require('./../store')
 
 const signUpSuccess = function (response) {
   $('form').trigger('reset')
-  $('#message').text('Sign up successful! Welcome ' + response.user.email + '!').show().delay(5000).fadeOut().removeClass().addClass('success')
+  $('#message').text('Sign up successful! Welcome ' + response.user.email + '!').show().delay(4000).fadeOut().removeClass().addClass('success')
   $('#logged-out-view').hide()
   $('.hidden').removeClass('hidden')
 }
@@ -14,7 +14,7 @@ const signUpFailure = function () {
 
 const signInSuccess = function (response) {
   $('form').trigger('reset')
-  $('#message').text('Welcome back ' + response.user.email + '!').show().delay(5000).fadeOut().removeClass().addClass('success')
+  $('#message').text('Welcome back ' + response.user.email + '!').show().delay(4000).fadeOut().removeClass().addClass('success')
   $('#logged-out-view').hide()
   $('.hidden').removeClass('hidden')
   store.user = response.user
@@ -27,7 +27,7 @@ const signInFailure = function () {
 
 const changePassSuccess = function (response) {
   $('form').trigger('reset')
-  $('#message').text('Password updated!').show().delay(5000).fadeOut().removeClass().addClass('success')
+  $('#message').text('Password updated!').show().delay(4000).fadeOut().removeClass().addClass('success')
   store.user.password = response.user.password
 }
 
@@ -38,7 +38,7 @@ const changePassFailure = function () {
 
 const signOutSuccess = function () {
   $('form').trigger('reset')
-  $('#message').text('Goodbye!').show().delay(5000).fadeOut().removeClass().addClass('success')
+  $('#message').text('Goodbye!').show().delay(4000).fadeOut().removeClass().addClass('success')
   $('#logged-out-view').show()
   $('main').addClass('hidden')
 }

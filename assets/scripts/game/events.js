@@ -42,18 +42,34 @@ const onUpdateGame = function (event) {
   const form = event.target
   const data = getFormFields(form)
   // check that the event target (form) will input the 'marker' of the currentPlayer (x)
-  if ($(form).text() === pOne || pTwo) {
-    // if the text in the form says p1 or p2, close that space. Do not allow play to that space, or to be overwritten
-    $('#message').text('That space is reserved! Choose again.').show()
+  // if ($(form).text() === pOne || pTwo) {
+  //   // if the text in the form says p1 or p2, close that space. Do not allow play to that space, or to be overwritten
+  //   $('#message').text('That space is reserved! Choose again.').show()
+  // }
+  // if ($(form).is(':empty')) {
+  if ($(form).html() === '') {
+    $('#message').hide()
+    $(form).text(currentPlayer)
+    // check for a winner?
+    if (currentPlayer === pOne) {
+      currentPlayer = pTwo
+      // $('#message').hide()
+    } else {
+      currentPlayer = pOne
+      // $('#message').text('Invalid move. Try Again.').show()
+    }
+  } else if ($(form).html() !== '') {
+    $('#message').text('Invalid Move').show()
   }
-  $(form).text(currentPlayer)
   // after input, check to see if currentPlayer is p1... if it is, then make cP equal to p2
-  if (currentPlayer === pOne) {
-    // if that is true, then switch players (make cP equal to p2)
-    currentPlayer = pTwo
-  } else {
-    currentPlayer = pOne
-  }
+          // if (currentPlayer === pOne) { // && $(form).innerHTML() === null - try an empty string?
+          //   // if that is true, then switch players (make cP equal to p2)
+          //   currentPlayer = pTwo
+          //   // $('#message').hide()
+          // } else {
+          //   currentPlayer = pOne
+          //   // $('#message').text('Invalid move. Try Again.').show()
+          // }
   // const gameBoard = ['', '', '', '', '', '', '', '', '']
   // // const form = event.target
   // // const data = getFormFields(form)
@@ -64,10 +80,9 @@ const onUpdateGame = function (event) {
   //   $(event.target).data('cell-index[]')
   // }
 
-
-// api.updateGame()
-//   .then(ui.updateGameSuccess)
-//   .catch(ui.updateGameFailure)
+  // api.updateGame()
+  //   .then(ui.updateGameSuccess)
+  //   .catch(ui.updateGameFailure)
 }
 
 module.exports = {

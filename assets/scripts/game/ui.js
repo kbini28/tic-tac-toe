@@ -31,7 +31,7 @@ const gameIndexFailure = function () {
 }
 
 const updateGameSuccess = function (event) {
-  $(event.target).on('click').text('x')
+  $('#message').text('updated').show()
 }
 
 const updateGameFailure = function () {
