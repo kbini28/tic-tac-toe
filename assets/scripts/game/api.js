@@ -24,20 +24,22 @@ const gameIndex = function (data) {
   })
 }
 
-const updateGame = function (data) {
+const updateGame = function (position, currentPlayer) {
+  console.log('what is data', position, currentPlayer)
+
   return $.ajax({
     method: 'PATCH',
-    url: config.apiUrl + '/games' + store.game._id,
+    url: config.apiUrl + '/games/' + store.game._id,
     headers: {
       Authorization: 'Token token=' + store.user.token
     },
     data: {
       game: {
         cell: {
-          index: data,
-          value: data
+          index: position,
+          value: currentPlayer
         },
-        over: data
+        over: false
       }
     }
   })
