@@ -45,6 +45,17 @@ const onUpdateGame = function (event) {
 
     const condition = gameCondition()
 
+    if (condition === true) {
+      $('#win-message').text(`The WINNER is ${currentPlayer}`)
+    } else if (condition === false) {
+      if (currentPlayer === pOne) {
+        currentPlayer = pTwo
+        // $('#message').hide()
+      } else {
+        currentPlayer = pOne
+        // $('#message').text('Invalid move. Try Again.').show()
+      }
+    }
     // if (condition === false) {
     //   if (currentPlayer === pOne) {
     //     currentPlayer = pTwo
@@ -61,20 +72,31 @@ const onUpdateGame = function (event) {
   } else if ($(event.target).text() !== '') {
     $('#message').text('Invalid Move').show().removeClass().addClass('failure')
   }
-  if (store.game.over === false) {
-    if (currentPlayer === pOne) {
-      currentPlayer = pTwo
-      // $('#message').hide()
-    } else {
-      currentPlayer = pOne
-      // $('#message').text('Invalid move. Try Again.').show()
-    }
-  }
+  // if (store.game.over === true) {
+  //   $('#win-message').text(`The WINNER is ${currentPlayer}`)
+  // } else if (store.game.over === false) {
+  //   if (currentPlayer === pOne) {
+  //     currentPlayer = pTwo
+  //     // $('#message').hide()
+  //   } else {
+  //     currentPlayer = pOne
+  //     // $('#message').text('Invalid move. Try Again.').show()
+  //   }
+  // }
+
+  //   if (currentPlayer === pOne) {
+  //     currentPlayer = pTwo
+  //     // $('#message').hide()
+  //   } else {
+  //     currentPlayer = pOne
+  //     // $('#message').text('Invalid move. Try Again.').show()
+  //   }
+  // }
 }
 
 const gameCondition = function () { // function name = gameCondition - return true/false
   if (store.game.cells[0] === store.game.cells[1] && store.game.cells[0] === store.game.cells[2] && store.game.cells[0] !== '') {
-    $('#win-message').text(`The WINNER is ${currentPlayer}`)
+    // $('#win-message').text(`The WINNER is ${currentPlayer}`)
     console.log('Winner', store.game.cells[0])
     // $('#message').text(`We have a winner!! Congratulations, ${currentPlayer} is the winner!!`)
     return true

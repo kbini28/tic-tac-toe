@@ -39,14 +39,6 @@ const updateGameFailure = function () {
   $('#message').text('Update failed.').show().removeClass().addClass('failure')
 }
 
-// const checkWinner = function (data) {
-//   if (data.cell.index[0] === data.cell.index[1] && data.cell.index[1] === data.cell.index[2]) {
-//     return $('#message').text(`Congratulations, ${gameEvents.currentPlayer} is the winner!!`)
-//   } else if (data.cell.index[0] === data.cell.index[1] && data.cell.index[1] === data.cell.index[2]) {
-//     return $('#message').text(`Congratulations, ${gameEvents.currentPlayer} is the winner!!`)
-//   }
-// }
-
 module.exports = {
   newGameSuccess,
   newGameFailure,
