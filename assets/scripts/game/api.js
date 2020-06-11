@@ -2,7 +2,7 @@ const config = require('./../config')
 const store = require('./../store')
 
 const newGame = function (data) {
-  console.log(data)
+  // console.log(data)
   return $.ajax({
     method: 'POST',
     url: config.apiUrl + '/games',
@@ -24,8 +24,8 @@ const gameIndex = function (data) {
   })
 }
 
-const updateGame = function (position, currentPlayer) {
-  console.log('what is data', position, currentPlayer)
+const updateGame = function (position, currentPlayer, condition) {
+  console.log('what is data', position, currentPlayer, condition)
 
   return $.ajax({
     method: 'PATCH',
@@ -39,7 +39,7 @@ const updateGame = function (position, currentPlayer) {
           index: position,
           value: currentPlayer
         },
-        over: false
+        over: condition
       }
     }
   })

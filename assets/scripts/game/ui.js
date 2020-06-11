@@ -1,5 +1,5 @@
 const store = require('./../store')
-// const gameEvents = require('./events')
+const gameEvents = require('./events')
 
 const newGameSuccess = function (response) {
   $('#game-board').trigger('reset')
@@ -15,8 +15,8 @@ const newGameFailure = function () {
 
 const gameIndexSuccess = function (response) {
   let gameIndexHtml = ''
-  response.games.forEach(game => {
-    const oneGame = response.games.id
+  response.game.forEach(game => {
+    const oneGame = response.game.id
     gameIndexHtml += oneGame
   })
 

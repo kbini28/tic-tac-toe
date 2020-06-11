@@ -6,7 +6,13 @@ body {
 
 button {
   background: #687E7A;
-  font-color: #9BBDB7;
+  color: #9BBDB7;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 3px;
+  width: 50%;
+  align-self: center;
+  margin: 10px;
 }
 
 .display-message {
@@ -21,6 +27,16 @@ button {
   margin: 40px;
 }
 
+input {
+  font-size: 14px;
+  padding: 4px;
+  border-radius: 4px;
+}
+
+h2 {
+  font-size: 24px;
+}
+
 .hidden {
   display: none;
 }
@@ -30,9 +46,11 @@ button {
 }
 
 input {
-  padding: 2px;
   margin: 2px;
   border: 2px solid #9BBDB7;
+  font-size: 14px;
+  padding: 4px;
+  border-radius: 4px;
 }
 
 #logged-out-view {
@@ -62,6 +80,9 @@ input {
   float: left;
   width: 30%;
   margin-left: 10%;
+  // &input {
+  //   border-radius: 3px;
+  // }
 }
 
 #sign-in {
