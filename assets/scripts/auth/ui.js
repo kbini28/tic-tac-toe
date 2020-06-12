@@ -2,9 +2,9 @@ const store = require('./../store')
 
 const signUpSuccess = function (response) {
   $('form').trigger('reset')
-  $('#message').text('Sign up successful! Welcome ' + response.user.email + '!').show().delay(4000).fadeOut().removeClass().addClass('success')
-  $('#logged-out-view').hide()
-  $('.hidden').removeClass('hidden')
+  $('#message').text('Sign up successful! Welcome ' + response.user.email + '! Sign in to begin!').show().delay(4000).fadeOut().removeClass().addClass('success')
+  // $('#logged-out-view').hide()
+  // $('.hidden').removeClass('hidden')
 }
 
 const signUpFailure = function () {
