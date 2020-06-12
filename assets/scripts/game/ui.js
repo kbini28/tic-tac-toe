@@ -1,5 +1,4 @@
 const store = require('./../store')
-const gameEvents = require('./events')
 
 const newGameSuccess = function (response) {
   $('#game-board').trigger('reset')
@@ -13,10 +12,16 @@ const newGameFailure = function () {
   $('#message').text('New game failed to load. Try again!').show()
 }
 
-const gameIndexSuccess = function (response) {
+const gameIndexSuccess = function (data) {
+  console.log('here is the game data', data.game)
   let gameIndexHtml = ''
-  response.game.forEach(game => {
-    const oneGame = response.game.id
+  data.game.forEach(game => {
+    const oneGame = (`
+      <h4>Game ID: ${data.game.id}</h4>
+      <p>Game Over?: ${data.game.over}</p>
+      <br>
+      `)
+
     gameIndexHtml += oneGame
   })
 
@@ -25,13 +30,13 @@ const gameIndexSuccess = function (response) {
 }
 
 const gameIndexFailure = function () {
-  $('#message').text('Game index failed to load.').show()
+  $('#message').text('Game index failed to load.').show().removeClass().addClass('failure').delay(4000).fadeOut()
 }
 
 const updateGameSuccess = function (response) {
   // console.log('response is ', response)
 
-  $('#message').text('Update successful.').show().delay(5000).fadeOut().removeClass().addClass('success')
+  $('#message').text('Update successful.') // .show().delay(5000).fadeOut().removeClass().addClass('success') Unneccessary?
   store.game = response.game
 }
 
@@ -46,5 +51,4 @@ module.exports = {
   updateGameFailure,
   gameIndexSuccess,
   gameIndexFailure
-  // checkWinner
 }

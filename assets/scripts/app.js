@@ -16,4 +16,5 @@ $(() => {
   $('#new-game').on('click', gameEvents.onNewGame)
   $('#game-index').on('click', gameEvents.onGameIndex)
   $('.box').on('click', gameEvents.onUpdateGame)
+  $('#settings').on('click', authEvents.onShowSettings)
 })

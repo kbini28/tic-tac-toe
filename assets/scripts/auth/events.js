@@ -44,9 +44,15 @@ const onSignOut = function (event) {
     .catch(ui.signOutFailure)
 }
 
+const onShowSettings = function () {
+  event.preventDefault()
+  $('.hidden-settings').toggle()
+}
+
 module.exports = {
   onSignUp,
   onSignIn,
   onChangePass,
-  onSignOut
+  onSignOut,
+  onShowSettings
 }

@@ -1,12 +1,23 @@
 @import '~bootstrap/scss/bootstrap';
 
+*{
+  font-family: monospace, sans-serif;
+}
+
 body {
   background: #CFFCF4;
 }
 
+.box {
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 button {
-  background: #687E7A;
-  color: #9BBDB7;
+  background: #4E5F5B;
+  color: #CFFCF4;
   font-size: 14px;
   font-weight: bold;
   border-radius: 3px;
@@ -15,22 +26,38 @@ button {
   margin: 10px;
 }
 
+// #change-password {
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: flex-end;
+//   align-self: center;
+//   float: right;
+//   margin-top: 20px;
+//   margin-right: 2%;
+//   width: 15%;
+//   min-width: 60px;
+//   align-content: center;
+// }
+
 .display-message {
   position: fixed;
-  top: 10px;
+  top: 0;
   font-size: 20px;
+  margin: 0;
+  padding: 0;
 }
 
 .failure {
-  color: red;
+  color: white;
+  background-color: #CD5C5C;
   text-align: center;
-  margin: 40px;
 }
 
 input {
   font-size: 14px;
   padding: 4px;
   border-radius: 4px;
+  background-color: #EEEEEE;
 }
 
 h2 {
@@ -41,9 +68,25 @@ h2 {
   display: none;
 }
 
+.hidden-settings {
+  display: none;
+  font-size: 14px;
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: flex-end;
+  // align-self: center;
+  // float: right;
+  // margin-top: 20px;
+  // margin-right: 2%;
+  // width: 15%;
+  // min-width: 60px;
+  // align-content: center;
+}
+
 .hide-game {
   display: none;
 }
+
 
 input {
   margin: 2px;
@@ -62,18 +105,44 @@ input {
   margin-top: 50px;
 }
 
-.row {
-  background: lightblue;
-  text-align: center;
-  height: 200px;
+#new-game {
+  width: 320px;
+  margin-left: 80px;
 }
 
-// .two-column-flex {
-//   display: flex;
-//   flex-direction: column;
-//   flex-basis: 30%;
-//   flex: 1;
-// }
+#game-index {
+  width: 320px;
+  margin-left: 80px;
+}
+
+.row {
+  background: #C3C4C4;
+  text-align: center;
+  height: 500px;
+  width: 700px;
+  display: flex;
+  justify-content: center;
+  align-contents: center;
+  margin: 20px
+  // align-self: center;
+}
+
+#settings {
+  display: flex;
+  justify-content: flex-end;
+  float: right;
+  margin-top: 20px;
+  margin-right: 2%;
+  width: 10%;
+  min-width: 40px;
+  align-content: center;
+  // position: fixed;
+  // top: 0;
+  // font-size: 20px;
+  // margin: 0;
+  // padding: 0;
+}
+
 #sign-up {
   display: flex;
   flex-direction: column;
@@ -94,7 +163,14 @@ input {
 }
 
 .success {
-  color: green;
+  color: white;
+  background: #2E8B57;
   text-align: center;
-  margin: 40px;
+  margin: 0;
+  padding: 0;
+}
+
+#win-message {
+  font-size: 30px;
+  color: #4E5F5B;
 }

@@ -13,14 +13,13 @@ const newGame = function (data) {
   })
 }
 
-const gameIndex = function (data) {
+const gameIndex = function () {
   return $.ajax({
     method: 'GET',
     url: config.apiUrl + '/games',
     headers: {
       Authorization: 'Token token=' + store.user.token
-    },
-    data: data
+    }
   })
 }
 
