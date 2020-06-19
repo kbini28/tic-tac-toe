@@ -42,8 +42,9 @@ const onUpdateGame = function (event) {
   // console.log to make sure the event handler is targeting the cells
   // console.log('this is the event target', event.target)
   // store.game.cells = currentPlayer
-
-  if ($(event.target).text() === '') {
+  if ($(event.target).text() !== '') {
+    $('#message').text('Invalid Move').show().removeClass().addClass('failure')
+  } else if ($(event.target).text() === '') {
     $('#win-message').hide()
     $(event.target).text(currentPlayer)
 
@@ -64,8 +65,6 @@ const onUpdateGame = function (event) {
     api.updateGame(position, currentPlayer, condition)
       .then(ui.updateGameSuccess)
       .catch(ui.updateGameFailure)
-  } else if ($(event.target).text() !== '') {
-    $('#message').text('Invalid Move').show().removeClass().addClass('failure')
   }
   // if (store.game.over === true) {
   //   $('#win-message').text(`The WINNER is ${currentPlayer}`)

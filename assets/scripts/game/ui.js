@@ -13,20 +13,22 @@ const newGameFailure = function () {
 }
 
 const gameIndexSuccess = function (data) {
-  console.log('here is the game data', data.game)
+  console.log('here is the game data', data.games)
   let gameIndexHtml = ''
-  data.game.forEach(game => {
+  let i = 0
+  data.games.forEach(game => {
     const oneGame = (`
-      <h4>Game ID: ${data.game.id}</h4>
-      <p>Game Over?: ${data.game.over}</p>
+      <h4>Game ID: ${data.games[i]._id}</h4>
+      <p>Game Over?: ${data.games[i].over}</p>
       <br>
       `)
-
+    i++
     gameIndexHtml += oneGame
   })
 
-  $('game-index').html(gameIndexHtml)
+  $('.game-index').html(gameIndexHtml)
   console.log(gameIndexHtml)
+
 }
 
 const gameIndexFailure = function () {

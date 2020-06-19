@@ -41,6 +41,8 @@ const signOutSuccess = function () {
   $('#message').text('Goodbye!').show().delay(4000).fadeOut().removeClass().addClass('success')
   $('#logged-out-view').show()
   $('main').addClass('hidden')
+  // $('store').trigger('reset')
+  $('.box').text('')
 }
 
 const signOutFailure = function () {

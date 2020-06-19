@@ -29,6 +29,7 @@ const signIn = function (data) {
 }
 
 const changePass = function (data) {
+  // console.log('user data', data)
   return $.ajax({
     method: 'PATCH',
     url: config.apiUrl + '/change-password',
