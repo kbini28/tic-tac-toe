@@ -17,6 +17,7 @@ const onNewGame = function (event) {
 
 const onGameIndex = function (event) {
   event.preventDefault()
+
   // const form = event.target
   // const data = getFormFields(form)
 
@@ -39,52 +40,28 @@ const start = function () {
 const onUpdateGame = function (event) {
   event.preventDefault()
 
-  // console.log to make sure the event handler is targeting the cells
-  // console.log('this is the event target', event.target)
-  // store.game.cells = currentPlayer
-  if ($(event.target).text() !== '') {
-    $('#message').text('Invalid Move').show().removeClass().addClass('failure')
-  } else if ($(event.target).text() === '') {
+  if ($(event.target).text() === '') {
     $('#win-message').hide()
     $(event.target).text(currentPlayer)
 
     const position = $(event.target).data('cell-index')
-
     const condition = gameCondition()
-
-    // if (condition === false) {
-    //   if (currentPlayer === pOne) {
-    //     currentPlayer = pTwo
-    //     // $('#message').hide()
-    //   } else {
-    //     currentPlayer = pOne
-    //     // $('#message').text('Invalid move. Try Again.').show()
-    //   }
-    // }
 
     api.updateGame(position, currentPlayer, condition)
       .then(ui.updateGameSuccess)
       .catch(ui.updateGameFailure)
-  }
-  // if (store.game.over === true) {
-  //   $('#win-message').text(`The WINNER is ${currentPlayer}`)
-  // } else if (store.game.over === false) {
-  //   if (currentPlayer === pOne) {
-  //     currentPlayer = pTwo
-  //     // $('#message').hide()
-  //   } else {
-  //     currentPlayer = pOne
-  //     // $('#message').text('Invalid move. Try Again.').show()
-  //   }
-  // }
-  if (store.game.over === false) {
-    if (currentPlayer === pOne) {
-      currentPlayer = pTwo
-      // $('#message').hide()
-    } else {
-      currentPlayer = pOne
-      // $('#message').text('Invalid move. Try Again.').show()
-    }
+    // if (condition === true) {
+    //   // $('.box').addClass('hide-game')
+    //   console.log('there is a winner')
+    // } else if (condition === false) {
+      if (currentPlayer === pOne) {
+        currentPlayer = pTwo
+      } else {
+        currentPlayer = pOne
+      }
+    // }
+  } else if ($(event.target).text() !== '') {
+    $('#message').text('Invalid Move').show().removeClass().addClass('failure')
   }
 }
 
@@ -125,6 +102,10 @@ const gameCondition = function () {
   // } else if (gameBoard.every(??) !== '') {
   //   console.log('Tie')
   //   store.game.over = true
+// } else if (store.game.cells !== '' && ) {
+//     console.log('Tie!')
+//     $('#win-message').text(`We have a tie!! Nobody wins, everybody loses!!`).show()
+//     return true
   } else {
     return false
   }

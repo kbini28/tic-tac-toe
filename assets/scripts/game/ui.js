@@ -13,7 +13,8 @@ const newGameFailure = function () {
 }
 
 const gameIndexSuccess = function (data) {
-  console.log('here is the game data', data.games)
+  // console.log('here is the game data', data.games)
+
   let gameIndexHtml = ''
   let i = 0
   data.games.forEach(game => {
@@ -25,10 +26,10 @@ const gameIndexSuccess = function (data) {
     i++
     gameIndexHtml += oneGame
   })
-
+  $('.game-index-qty').html(`Total number of games played: ${data.games.length}`)
   $('.game-index').html(gameIndexHtml)
-  console.log(gameIndexHtml)
-
+  // console.log(gameIndexHtml)
+  $('.hidden').toggle()
 }
 
 const gameIndexFailure = function () {
@@ -40,6 +41,11 @@ const updateGameSuccess = function (response) {
 
   $('#message').text('Update successful.') // .show().delay(5000).fadeOut().removeClass().addClass('success') Unneccessary?
   store.game = response.game
+  console.log(store.game)
+  if (store.game.over === true) {
+    $('#win-message').text(`We have a winner!! Congratulations, ${store.game.cells.value} is the winner!!`)
+  }
+  // console.log(store.game.over)
 }
 
 const updateGameFailure = function () {
