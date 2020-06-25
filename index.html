@@ -50,10 +50,12 @@
             <button>Sign Out</button>
           </div>
         </section>
+
         <div id="new-game" class="hidden new-game">
           <button type="submit">New Game!</button>
         </div>
         <!-- does this ^ need to be a form? -->
+
         <section id="game-board" class="hide-game container">
           <p id="win-message" class="col-12"></p>
           <div class="row">
@@ -68,11 +70,18 @@
             <div class="col-4 box" data-cell-index="8"></div>
           </div>
         </section>
-        <div id="game-index" class="hidden">
-          <button type="submit">Show All Games</button>
-          <p class="game-index-qty"></p>
-          <p class="game-index"></p>
-        </div>
+
+        <section class="show-game-index">
+          <!-- <form id="show-game" class="hidden">
+            <input type="text" name="show-game" placeholder="Find game by ID">
+            <button type="submit">Find Game</button>
+          </form> -->
+          <div id="game-index" class="hidden">
+            <button type="submit">Show All Games</button>
+            <p class="game-index-qty"></p>
+            <p class="game-index"></p>
+          </div>
+        </section>
       </main>
     </body>
 </html>

@@ -15,6 +15,7 @@ $(() => {
   $('#sign-out').on('click', authEvents.onSignOut)
   $('#new-game').on('click', gameEvents.onNewGame)
   $('#game-index').on('click', gameEvents.onGameIndex)
+  $('#show-game').on('submit', gameEvents.onShowGame)
   $('.box').on('click', gameEvents.onUpdateGame)
   $('#settings').on('click', authEvents.onShowSettings)
 })

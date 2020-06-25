@@ -23,8 +23,20 @@ const gameIndex = function () {
   })
 }
 
+// const showGame = function (data) {
+//   console.log('what is data? ', data)
+//   return $.ajax({
+//     method: 'GET',
+//     url: config.apiUrl + '/games/' + store.id,
+//     headers: {
+//       Authorization: 'Token token=' + store.user.token
+//     },
+//     data: ''
+//   })
+// }
+
 const updateGame = function (position, currentPlayer, condition) {
-  console.log('what is data', position, currentPlayer, condition)
+  // console.log('what is data', position, currentPlayer, condition)
 
   return $.ajax({
     method: 'PATCH',
@@ -47,5 +59,6 @@ const updateGame = function (position, currentPlayer, condition) {
 module.exports = {
   newGame,
   gameIndex,
+  showGame,
   updateGame
 }

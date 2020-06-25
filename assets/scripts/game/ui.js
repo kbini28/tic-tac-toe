@@ -1,5 +1,4 @@
 const store = require('./../store')
-const e = require('./events')
 
 const newGameSuccess = function (response) {
   $('#game-board').trigger('reset')
@@ -30,41 +29,51 @@ const gameIndexSuccess = function (data) {
   $('.game-index-qty').html(`Total number of games played: ${data.games.length}`)
   $('.game-index').html(gameIndexHtml)
   // console.log(gameIndexHtml)
-  $('.hidden').toggle()
+  $('.hidden').toggle(true)
 }
 
 const gameIndexFailure = function () {
   $('#message').text('Game index failed to load.').show().removeClass().addClass('failure').delay(4000).fadeOut()
 }
 
+// const showGameSuccess = function (data) {
+//   $('.game-index-qty').html(`Total number of games played: ${data.games.length}`)
+//   $('.game-index').html(data)
+// }
+//
+// const showGameFailure = function () {
+//   $('#message').text('Invalid game ID').show().removeClass().addClass('failure').delay(4000).fadeOut()
+// }
+
 const updateGameSuccess = function (response, event) {
   // console.log('response is ', response)
-
-  $('#message').text('Update successful.').removeClass().addClass('success') // .show().delay(5000).fadeOut() Unneccessary?
-  store.game = response.game
-  console.log('this is store.game', store.game)
-  // let check = e.gameCondition()
-  // console.log('check', check)
-
-  // if ($(event.target).text() === '' && !store.game.over) {
-  //   $('#win-message').hide()
-  //   $(event.target).text(currentPlayer)
-  // } else if
-  // if (store.game.over === true) {
-  //   $('#win-message').text(`We have a winner!! Congratulations,  is the winner!!`)
-  // }
-  // console.log(store.game.over)
+  // only run this function if the game is still going, otherwise do not show success message
+  if (store.game.over === false) {
+    // don't need to show a success message every time the board updates (only need a failure)
+    // $('#message').text('Update successful.').removeClass().addClass('success') // .show().delay(5000).fadeOut() Unneccessary?
+    store.game = response.game
+    // console.log('this is store.game', store.game)
+  }
 }
 
 const updateGameFailure = function () {
   $('#message').text('Update failed.').show().removeClass().addClass('failure')
 }
 
+// when the game is over, "prevent" the spaces from being filled with x/o (at least until I find a better way)
+const gameOver = function (event) {
+  $('#message').text('Invalid Move').show().removeClass().addClass('failure')
+  $(event.target).text(' ')
+}
+
 module.exports = {
   newGameSuccess,
   newGameFailure,
+  gameIndexSuccess,
+  gameIndexFailure,
+  showGameSuccess,
+  showGameFailure,
   updateGameSuccess,
   updateGameFailure,
-  gameIndexSuccess,
-  gameIndexFailure
+  gameOver
 }

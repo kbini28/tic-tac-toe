@@ -6,7 +6,8 @@ const store = require('./../store')
 const onNewGame = function (event) {
   event.preventDefault()
   $('#win-message').hide()
-  const gameStart = start()
+  // start the game, always with pOne
+  start()
   // const form = event.target
   // const data = getFormFields(form)
   // gameStart()
@@ -26,17 +27,24 @@ const onGameIndex = function (event) {
     .catch(ui.gameIndexFailure)
 }
 
-// const pOne = 'x'
-// const pTwo = 'o'
+// const onShowGame = function (event) {
+//   event.preventDefault()
+//   const form = event.target
+//   const data = getFormFields(form)
+//
+//   api.showGame(data)
+//     .then(ui.showGameSuccess)
+//     .catch(ui.showGameFailure)
+// }
+
+const pOne = 'x'
+const pTwo = 'o'
 let currentPlayer
 // let condition = store.game.over
 // store.game.over = condition
 const start = function () {
-  currentPlayer = 'x'
+  currentPlayer = pOne
 }
-// const pOne = 'x'
-// const pTwo = 'o'
-// let currentPlayer = pOne
 // const gameBoard = store.cells
 
 const onUpdateGame = function (event) {
@@ -58,7 +66,7 @@ const onUpdateGame = function (event) {
       .then(function () {
         const condition = gameCondition()
         if (condition) {
-          store.game.over = true
+          // store.game.over = true
           return api.updateGame(position, currentPlayer, true)
         }
       })
@@ -71,42 +79,50 @@ const onUpdateGame = function (event) {
     // } else if (condition === false) {
     // gameCondition()
 
-    if (currentPlayer === 'x') {
-      currentPlayer = 'o'
+    // swap turns
+    if (condition === false) {
+      if (currentPlayer === pOne) {
+        currentPlayer = pTwo
+      } else {
+        currentPlayer = pOne
+      }
     } else {
-      currentPlayer = 'x'
+      // ui.updateGameFailure()
+      ui.gameOver(event)
+      // $('#message').text('Invalid Move').show().removeClass().addClass('failure')
     }
-    // }
+    // invalid move, space already taken, try again
   } else if ($(event.target).text() !== '') {
     $('#message').text('Invalid Move').show().removeClass().addClass('failure')
   }
 }
 
+// check for a winner (gameCondition relates back to API, store.game.over)
 const gameCondition = function () {
   if (store.game.cells[0] === store.game.cells[1] && store.game.cells[0] === store.game.cells[2] && store.game.cells[0] !== '') {
     // console.log('Winner', store.game.cells[0]) REMOVE THE CONSOLE LOGS AFTER WIN CONDITION IS CONFIRMED FUNCTIONAL
-    $('#win-message').text(`We have a winner!! Congratulations, ${store.game.cells[0]} is the winner!!`).show()
+    $('#win-message').text(`GAME OVER!! Congratulations, ${store.game.cells[0]} is the winner!!`).show()
     return true
   } else if (store.game.cells[3] === store.game.cells[4] && store.game.cells[3] === store.game.cells[5] && store.game.cells[3] !== '') {
-    $('#win-message').text(`We have a winner!! Congratulations, ${store.game.cells[3]} is the winner!!`).show()
+    $('#win-message').text(`GAME OVER!! Congratulations, ${store.game.cells[3]} is the winner!!`).show()
     return true
   } else if (store.game.cells[6] === store.game.cells[7] && store.game.cells[6] === store.game.cells[8] && store.game.cells[6] !== '') {
-    $('#win-message').text(`We have a winner!! Congratulations, ${store.game.cells[6]} is the winner!!`).show()
+    $('#win-message').text(`GAME OVER!! Congratulations, ${store.game.cells[6]} is the winner!!`).show()
     return true
   } else if (store.game.cells[0] === store.game.cells[3] && store.game.cells[0] === store.game.cells[6] && store.game.cells[0] !== '') {
-    $('#win-message').text(`We have a winner!! Congratulations, ${store.game.cells[0]} is the winner!!`).show()
+    $('#win-message').text(`GAME OVER!! Congratulations, ${store.game.cells[0]} is the winner!!`).show()
     return true
   } else if (store.game.cells[1] === store.game.cells[4] && store.game.cells[1] === store.game.cells[7] && store.game.cells[1] !== '') {
-    $('#win-message').text(`We have a winner!! Congratulations, ${store.game.cells[1]} is the winner!!`).show()
+    $('#win-message').text(`GAME OVER!! Congratulations, ${store.game.cells[1]} is the winner!!`).show()
     return true
   } else if (store.game.cells[2] === store.game.cells[5] && store.game.cells[2] === store.game.cells[8] && store.game.cells[2] !== '') {
-    $('#win-message').text(`We have a winner!! Congratulations, ${store.game.cells[2]} is the winner!!`).show()
+    $('#win-message').text(`GAME OVER!! Congratulations, ${store.game.cells[2]} is the winner!!`).show()
     return true
   } else if (store.game.cells[0] === store.game.cells[4] && store.game.cells[0] === store.game.cells[8] && store.game.cells[0] !== '') {
-    $('#win-message').text(`We have a winner!! Congratulations, ${store.game.cells[0]} is the winner!!`).show()
+    $('#win-message').text(`GAME OVER!! Congratulations, ${store.game.cells[0]} is the winner!!`).show()
     return true
   } else if (store.game.cells[2] === store.game.cells[4] && store.game.cells[2] === store.game.cells[6] && store.game.cells[2] !== '') {
-    $('#win-message').text(`We have a winner!! Congratulations, ${store.game.cells[2]} is the winner!!`).show()
+    $('#win-message').text(`GAME OVER!! Congratulations, ${store.game.cells[2]} is the winner!!`).show()
     return true
   // } else if (gameBoard.every(??) !== '') {
   //   console.log('Tie')
@@ -115,7 +131,7 @@ const gameCondition = function () {
   // In the event of a TIE...
   } else if (store.game.cells[0] !== '' && store.game.cells[1] !== '' && store.game.cells[2] !== '' && store.game.cells[3] !== '' && store.game.cells[4] !== '' && store.game.cells[5] !== '' && store.game.cells[6] !== '' && store.game.cells[7] !== '' && store.game.cells[8] !== '') {
     // console.log('Tie!')
-    $('#win-message').text(`We have a tie!! Nobody wins, everybody loses!!`).show()
+    $('#win-message').text(`It's a tie!! Nobody wins, everybody loses!!`).show()
     return true
   } else {
     // if none of these conditions are true, return false and keep playing
@@ -123,9 +139,9 @@ const gameCondition = function () {
   }
 }
 
-
 module.exports = {
   onNewGame,
   onGameIndex,
+  onShowGame,
   onUpdateGame
 }
