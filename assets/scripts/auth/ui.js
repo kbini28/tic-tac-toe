@@ -43,6 +43,7 @@ const signOutSuccess = function () {
   $('main').addClass('hidden')
   // $('store').trigger('reset')
   $('.box').text('')
+  store.user = null
 }
 
 const signOutFailure = function () {

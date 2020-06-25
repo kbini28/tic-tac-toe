@@ -1,4 +1,5 @@
 const store = require('./../store')
+const e = require('./events')
 
 const newGameSuccess = function (response) {
   $('#game-board').trigger('reset')
@@ -36,15 +37,22 @@ const gameIndexFailure = function () {
   $('#message').text('Game index failed to load.').show().removeClass().addClass('failure').delay(4000).fadeOut()
 }
 
-const updateGameSuccess = function (response) {
+const updateGameSuccess = function (response, event) {
   // console.log('response is ', response)
 
-  $('#message').text('Update successful.') // .show().delay(5000).fadeOut().removeClass().addClass('success') Unneccessary?
+  $('#message').text('Update successful.').removeClass().addClass('success') // .show().delay(5000).fadeOut() Unneccessary?
   store.game = response.game
-  console.log(store.game)
-  if (store.game.over === true) {
-    $('#win-message').text(`We have a winner!! Congratulations, ${store.game.cells.value} is the winner!!`)
-  }
+  console.log('this is store.game', store.game)
+  // let check = e.gameCondition()
+  // console.log('check', check)
+
+  // if ($(event.target).text() === '' && !store.game.over) {
+  //   $('#win-message').hide()
+  //   $(event.target).text(currentPlayer)
+  // } else if
+  // if (store.game.over === true) {
+  //   $('#win-message').text(`We have a winner!! Congratulations,  is the winner!!`)
+  // }
   // console.log(store.game.over)
 }
 
