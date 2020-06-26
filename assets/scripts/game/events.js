@@ -31,14 +31,15 @@ const onGameIndex = function (event) {
 //   event.preventDefault()
 //   const form = event.target
 //   const data = getFormFields(form)
+//   console.log('event data ', data)
 //
 //   api.showGame(data)
 //     .then(ui.showGameSuccess)
 //     .catch(ui.showGameFailure)
 // }
 
-const pOne = 'x'
-const pTwo = 'o'
+const pOne = 'X'
+const pTwo = 'O'
 let currentPlayer
 // let condition = store.game.over
 // store.game.over = condition
@@ -142,6 +143,6 @@ const gameCondition = function () {
 module.exports = {
   onNewGame,
   onGameIndex,
-  onShowGame,
+  // onShowGame,
   onUpdateGame
 }

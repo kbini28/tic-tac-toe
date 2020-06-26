@@ -24,20 +24,18 @@ const gameIndex = function () {
 }
 
 // const showGame = function (data) {
-//   console.log('what is data? ', data)
+//   console.log('what is API data? ', data)
 //   return $.ajax({
 //     method: 'GET',
-//     url: config.apiUrl + '/games/' + store.id,
+//     url: config.apiUrl + '/games/' + store._id,
 //     headers: {
 //       Authorization: 'Token token=' + store.user.token
-//     },
-//     data: ''
+//     }
 //   })
 // }
 
 const updateGame = function (position, currentPlayer, condition) {
   // console.log('what is data', position, currentPlayer, condition)
-
   return $.ajax({
     method: 'PATCH',
     url: config.apiUrl + '/games/' + store.game._id,
@@ -59,6 +57,6 @@ const updateGame = function (position, currentPlayer, condition) {
 module.exports = {
   newGame,
   gameIndex,
-  showGame,
+  // showGame,
   updateGame
 }

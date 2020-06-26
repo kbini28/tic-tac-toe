@@ -20,7 +20,7 @@ const gameIndexSuccess = function (data) {
   data.games.forEach(game => {
     const oneGame = (`
       <h4>Game ID: ${data.games[i]._id}</h4>
-      <p>Game Over?: ${data.games[i].over}</p>
+      <p class="index">Game Over?: ${data.games[i].over}</p>
       <br>
       `)
     i++
@@ -37,10 +37,11 @@ const gameIndexFailure = function () {
 }
 
 // const showGameSuccess = function (data) {
-//   $('.game-index-qty').html(`Total number of games played: ${data.games.length}`)
+//   console.log('ui data ', data)
+//   // $('.game-index-qty').html(`Total number of games played: ${data.games.length}`)
 //   $('.game-index').html(data)
 // }
-//
+
 // const showGameFailure = function () {
 //   $('#message').text('Invalid game ID').show().removeClass().addClass('failure').delay(4000).fadeOut()
 // }
@@ -62,7 +63,7 @@ const updateGameFailure = function () {
 
 // when the game is over, "prevent" the spaces from being filled with x/o (at least until I find a better way)
 const gameOver = function (event) {
-  $('#message').text('Invalid Move').show().removeClass().addClass('failure')
+  $('#message').text('Invalid Move').show().removeClass().addClass('failure').delay(4000).fadeOut()
   $(event.target).text(' ')
 }
 
@@ -71,8 +72,8 @@ module.exports = {
   newGameFailure,
   gameIndexSuccess,
   gameIndexFailure,
-  showGameSuccess,
-  showGameFailure,
+  // showGameSuccess,
+  // showGameFailure,
   updateGameSuccess,
   updateGameFailure,
   gameOver

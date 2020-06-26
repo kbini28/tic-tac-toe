@@ -28,7 +28,7 @@ const signInFailure = function () {
 const changePassSuccess = function (response) {
   $('form').trigger('reset')
   $('#message').text('Password updated!').show().delay(4000).fadeOut().removeClass().addClass('success')
-  store.user.password = response.user.password
+  // store.user.password = response.user.password
 }
 
 const changePassFailure = function () {
@@ -42,6 +42,7 @@ const signOutSuccess = function () {
   $('#logged-out-view').show()
   $('main').addClass('hidden')
   // $('store').trigger('reset')
+  $('.hidden-settings').toggle()
   $('.box').text('')
   store.user = null
 }
