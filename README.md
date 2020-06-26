@@ -7,10 +7,10 @@ The application allows the user to create a new account, then sign in to the gam
 
 ## Important Links
 
-```md
+
 [GitHub Repository](https://github.com/kbini28/tic-tac-toe)
 [Application](kbini28.github.io/tic-tac-toe/)
-```
+
 
 ## Planning Story
 
