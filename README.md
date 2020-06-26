@@ -1,129 +1,43 @@
-[![General Assembly Logo](https://camo.githubusercontent.com/1a91b05b8f4d44b5bbfb83abac2b0996d8e26c92/687474703a2f2f692e696d6775722e636f6d2f6b6538555354712e706e67)](https://generalassemb.ly/education/web-development-immersive)
 
-# browser-template
+# Tic-Tac-Toe Client Application
 
-A template for starting front-end projects. Webpack for `require` system, build
-pipeline, and development server. Boostrap and Handlebars.js included. No
-front-end frameworks included.
+This application allows the client to play a classic game of tic-tac-toe in the browser. This game is created using a single-page application, allowing for a smooth and user-friendly interface.
 
-## Installation
+The application allows the user to create a new account, then sign in to the game. Clicking the 'New Game' button will reveal a new game board, and the game board displays an X for player one and an O for player two in alternating fashion. When a player reaches three in a row, the game ends and displays a message that X or O has won the game, depending on who has three in a row. In the event of a tie, the game displays a tie message, declaring everyone a loser!
 
-1. [Download](../../archive/master.zip) this template.
-    - **Do Not Fork And Clone**
-    - Click the "Clone or Download" button and select "Download Zip".
-1. Move to the `wdi/projects` directory, then unzip the template directory with
-    `unzip /Users/<user-name>/Downloads/browser-template-master.zip`.
-1. Rename the template directory from `browser-template-master` to
-    `<project-name>-client`.
-1. Empty [`README.md`](README.md) and fill with your own content.
-1. Replace all instances of `ga-wdi-boston.browser-template` with the name of
-    your project.
-    - You can search for all instances of text in Atom by pressing
-    `commant + shift + f` on Mac or `ctrl + shift + f` on WSL.
-1. Move into the new project and `git init`.
-1. Add all of the files in your project with the command `git add --all`.
-      - **Note: This is the only time you should run this command!**
-1. Commit all of your files with the command `git commit`.
-      - Your commit title should read `Initial commit`.
-1. Install dependencies with `npm install`.
-1. Create a new repository on [github.com](https://github.com),
-    _not GitHub Enterprise_.
-1. Name the new repository with the same name used on Step 3.
-1. Follow the instructions on your new repository's setup page. For details on
-   how to push to Github, refer to the section on Github entitled "…or push an existing
-   repository from the command line." Further documentation can be found [here](https://help.github.com/articles/adding-an-existing-project-to-github-using-the-command-line/).
+## Important Links
 
-## Structure
-
-### Scripts
-
-Developers should store JavaScript files in [`assets/scripts`](assets/scripts).
-The "manifest" or entry-point is
-[`assets/scripts/app.js`](assets/scripts/app.js). In general, only
-application initialization goes in this file. It's normal for developers to
-start putting all code in this file, but encourage them to break out different
-responsibilities and use the `require` syntax put references where they're
-needed.
-
-### Config
-
-Developers should set `apiUrls.production` and `apiUrls.development` in
-[`assets/scripts/config.js`](assets/scripts/config.js).  With
-`apiUrls` set, developers may rely on `apiUrl` as the base for API
-URLs.
-
-### Styles
-
-Developers should store styles in [`assets/styles`](assets/styles) and load them
-from [`assets/styles/index.scss`](assets/styles/index.scss). Bootstrap version 3 is
-included in this template.
-
-### Forms and Using `getFormFields`
-
-Developers should use [getFormFields](get-form-fields.md) to retrieve form data
-to send to an API.
-
-### Deployment
-
-To deploy a browser-template based SPA, run `grunt deploy`.
-
-## Adding Images
-
-To add images to your project, you must store them in the `public` directory.
-To use the image in HTML or CSS, write the path to the image like this:
-
-```html
-<img src="public/cat.jpg">
-```
-or
-```css
-#my-cool-div {
-  background-image: url('public/cat.jpg')
-}
+```md
+[GitHub Repository](https://github.com/kbini28/tic-tac-toe)
+[Application](kbini28.github.io/tic-tac-toe/)
 ```
 
-Note that there's no `./` or `/` in front of `public/filename.jpg`.
+## Planning Story
 
-## Adding Fonts
+My plan for building the game app was to start with the authentication. Allowing a user to create an account and sign in to the app are the first steps to playing, so they were the most important features to start with, followed by change password and finally sign out. I constructed a basic gameboard using Bootstrap to create the boxes, along with an event handler to record and update the API with each click. This was without a doubt the most difficult part, as I spent several days creating the basic logic getting the game to record x and o on the board, then preventing a space from being overwritten, and finally updating the game logic to declare a winner. I found that my own logic was different than the way the game logic should be written, which became my biggest pain point. Once I was able to find the correct order of operations (with much appreciated help from classmates and instructors), the rest of the game fell into place quite nicely. I should have kept all of the CSS and styling until the end, but I chose to stlye my app "after-hours". It helped ease the pressure of not having a completed project, but also caused headaches, as I ended up with extra class and ID labels, and very specific style code that could have been organized and executed better if it was all done at once (after the main pieces were all constructed).
 
-To add custom fonts to your app, you can either use a CDN like Google Fonts, or
-you can download the fonts and save them in the `public` directory. If you use
-the former method, follow the directions on the website providing the fonts.
+### User Stories
 
-For local fonts, put the files in `public`, and then import and use them in a
-`.scss` file like this:
+  * As a user, I want to see my win stats to know if player 1 or player 2 is better.
+  * As a user, I want to choose my own game piece.
+  * As a user, I want a visually pleasing game board.
+  * As a user, I want automatic responses to starting a new game, clicking the game board, etc.
+  * As a user, I want a game board with a fast response, no loading.
 
-```scss
-@font-face {
-  font-family: 'Nature Beauty';
-  src: url('public/Nature-Beauty.ttf') format('truetype');
-}
+I learned later during project planning that my user stories were a bit too narrowed in, and should include more basic goals, like "As a user, I want to sign in."
 
-.element-with-custom-font {
-  font-family: 'Nature Beauty';
-}
-```
+### Technologies Used
 
-## Tasks
+  * HTML
+  * CSS/SASS and Bootstrap
+  * JavaScript
+  * jQuery
 
-Developers should run these often!
+### Unsolved Problems
 
-- `grunt nag` or just `grunt`: runs code quality analysis tools on your code
-    and complains
-- `grunt make-standard`: reformats all your code in the JavaScript Standard Style
-- `grunt <server|serve|s>`: generates bundles, watches, and livereloads
-- `grunt build`: place bundled styles and scripts where `index.html` can find
-    them
-- `grunt deploy`: builds and deploys master branch
+My biggest regret as I mentioned was styling sporadically. I would like to fix many of the styling aspects to clean up my code and my game board/buttons.
+I was not able to toggle a few of the buttons that I would have liked - specifically figuring out how to toggle the game index button to show all games once, and then hide them when clicked a second time.
 
+### Wireframe
 
-## Additional Resources
-
-- [Modern Javascript Explained for Dinosaurs](https://medium.com/@peterxjang/modern-javascript-explained-for-dinosaurs-f695e9747b70)
-- [Making Sense of Front End Build Tools](https://medium.freecodecamp.org/making-sense-of-front-end-build-tools-3a1b3a87043b)
-
-## [License](LICENSE)
-
-1. All content is licensed under a CC­BY­NC­SA 4.0 license.
-1. All software code is licensed under GNU GPLv3. For commercial use or
-    alternative licensing, please contact legal@ga.co.
+[Wireframe](https://i.imgur.com/4PUmQKG.png)
