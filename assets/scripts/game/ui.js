@@ -29,7 +29,7 @@ const gameIndexSuccess = function (data) {
   $('.game-index-qty').html(`Total number of games played: ${data.games.length}`)
   $('.game-index').html(gameIndexHtml)
   // console.log(gameIndexHtml)
-  $('.hidden').toggle(true)
+  // $('.hidden').toggle(true)
 }
 
 const gameIndexFailure = function () {

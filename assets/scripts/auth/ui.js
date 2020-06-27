@@ -1,4 +1,5 @@
 const store = require('./../store')
+const gameUi = require('./../game/ui')
 
 const signUpSuccess = function (response) {
   $('form').trigger('reset')
@@ -42,8 +43,12 @@ const signOutSuccess = function () {
   $('#logged-out-view').show()
   $('main').addClass('hidden')
   // $('store').trigger('reset')
+  // reset all settings
   $('.hidden-settings').toggle()
   $('.box').text('')
+  $('#win-message').hide()
+  $('.game-index-qty').html('')
+  $('.game-index').html('')
   store.user = null
 }
 
