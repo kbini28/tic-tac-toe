@@ -58,7 +58,7 @@ const updateGameSuccess = function (response, event) {
 }
 
 const updateGameFailure = function () {
-  $('#message').text('Update failed.').show().removeClass().addClass('failure')
+  $('#message').text('Update failed.').show().removeClass().addClass('failure').delay(4000).fadeOut()
 }
 
 // when the game is over, "prevent" the spaces from being filled with x/o (at least until I find a better way)

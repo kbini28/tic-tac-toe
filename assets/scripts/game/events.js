@@ -52,7 +52,7 @@ const onUpdateGame = function (event) {
   event.preventDefault()
 
   // if the click event target is empty, fill the target text with the currentPlayer (and hide messages)
-  if ($(event.target).text() === '') {
+  if ($(event.target).text() === '' && store.game.over === false) {
     $('#win-message').hide()
     $(event.target).text(currentPlayer)
 
@@ -68,7 +68,7 @@ const onUpdateGame = function (event) {
         const condition = gameCondition()
         if (condition) {
           // store.game.over = true
-          return api.updateGame(position, currentPlayer, true)
+          return api.updateGame(position, currentPlayer, condition)
         }
       })
       .catch(ui.updateGameFailure)
@@ -100,43 +100,47 @@ const onUpdateGame = function (event) {
 
 // check for a winner (gameCondition relates back to API, store.game.over)
 const gameCondition = function () {
-  if (store.game.cells[0] === store.game.cells[1] && store.game.cells[0] === store.game.cells[2] && store.game.cells[0] !== '') {
-    // console.log('Winner', store.game.cells[0]) REMOVE THE CONSOLE LOGS AFTER WIN CONDITION IS CONFIRMED FUNCTIONAL
-    $('#win-message').text(`GAME OVER!! Congratulations, ${store.game.cells[0]} is the winner!!`).show()
-    return true
-  } else if (store.game.cells[3] === store.game.cells[4] && store.game.cells[3] === store.game.cells[5] && store.game.cells[3] !== '') {
-    $('#win-message').text(`GAME OVER!! Congratulations, ${store.game.cells[3]} is the winner!!`).show()
-    return true
-  } else if (store.game.cells[6] === store.game.cells[7] && store.game.cells[6] === store.game.cells[8] && store.game.cells[6] !== '') {
-    $('#win-message').text(`GAME OVER!! Congratulations, ${store.game.cells[6]} is the winner!!`).show()
-    return true
-  } else if (store.game.cells[0] === store.game.cells[3] && store.game.cells[0] === store.game.cells[6] && store.game.cells[0] !== '') {
-    $('#win-message').text(`GAME OVER!! Congratulations, ${store.game.cells[0]} is the winner!!`).show()
-    return true
-  } else if (store.game.cells[1] === store.game.cells[4] && store.game.cells[1] === store.game.cells[7] && store.game.cells[1] !== '') {
-    $('#win-message').text(`GAME OVER!! Congratulations, ${store.game.cells[1]} is the winner!!`).show()
-    return true
-  } else if (store.game.cells[2] === store.game.cells[5] && store.game.cells[2] === store.game.cells[8] && store.game.cells[2] !== '') {
-    $('#win-message').text(`GAME OVER!! Congratulations, ${store.game.cells[2]} is the winner!!`).show()
-    return true
-  } else if (store.game.cells[0] === store.game.cells[4] && store.game.cells[0] === store.game.cells[8] && store.game.cells[0] !== '') {
-    $('#win-message').text(`GAME OVER!! Congratulations, ${store.game.cells[0]} is the winner!!`).show()
-    return true
-  } else if (store.game.cells[2] === store.game.cells[4] && store.game.cells[2] === store.game.cells[6] && store.game.cells[2] !== '') {
-    $('#win-message').text(`GAME OVER!! Congratulations, ${store.game.cells[2]} is the winner!!`).show()
-    return true
-  // } else if (gameBoard.every(??) !== '') {
-  //   console.log('Tie')
-  //   store.game.over = true
-
-  // In the event of a TIE...
-  } else if (store.game.cells[0] !== '' && store.game.cells[1] !== '' && store.game.cells[2] !== '' && store.game.cells[3] !== '' && store.game.cells[4] !== '' && store.game.cells[5] !== '' && store.game.cells[6] !== '' && store.game.cells[7] !== '' && store.game.cells[8] !== '') {
-    // console.log('Tie!')
-    $('#win-message').text(`It's a tie!! Nobody wins, everybody loses!!`).show()
-    return true
+  if (store.game.over === true) {
+    $('#win-message').text(`Stop trying, it's already over!`).show()
   } else {
-    // if none of these conditions are true, return false and keep playing
-    return false
+    if (store.game.cells[0] === store.game.cells[1] && store.game.cells[0] === store.game.cells[2] && store.game.cells[0] !== '') {
+      // console.log('Winner', store.game.cells[0]) REMOVE THE CONSOLE LOGS AFTER WIN CONDITION IS CONFIRMED FUNCTIONAL
+      $('#win-message').text(`GAME OVER!! Congratulations, ${store.game.cells[0]} is the winner!!`).show()
+      return true
+    } else if (store.game.cells[3] === store.game.cells[4] && store.game.cells[3] === store.game.cells[5] && store.game.cells[3] !== '') {
+      $('#win-message').text(`GAME OVER!! Congratulations, ${store.game.cells[3]} is the winner!!`).show()
+      return true
+    } else if (store.game.cells[6] === store.game.cells[7] && store.game.cells[6] === store.game.cells[8] && store.game.cells[6] !== '') {
+      $('#win-message').text(`GAME OVER!! Congratulations, ${store.game.cells[6]} is the winner!!`).show()
+      return true
+    } else if (store.game.cells[0] === store.game.cells[3] && store.game.cells[0] === store.game.cells[6] && store.game.cells[0] !== '') {
+      $('#win-message').text(`GAME OVER!! Congratulations, ${store.game.cells[0]} is the winner!!`).show()
+      return true
+    } else if (store.game.cells[1] === store.game.cells[4] && store.game.cells[1] === store.game.cells[7] && store.game.cells[1] !== '') {
+      $('#win-message').text(`GAME OVER!! Congratulations, ${store.game.cells[1]} is the winner!!`).show()
+      return true
+    } else if (store.game.cells[2] === store.game.cells[5] && store.game.cells[2] === store.game.cells[8] && store.game.cells[2] !== '') {
+      $('#win-message').text(`GAME OVER!! Congratulations, ${store.game.cells[2]} is the winner!!`).show()
+      return true
+    } else if (store.game.cells[0] === store.game.cells[4] && store.game.cells[0] === store.game.cells[8] && store.game.cells[0] !== '') {
+      $('#win-message').text(`GAME OVER!! Congratulations, ${store.game.cells[0]} is the winner!!`).show()
+      return true
+    } else if (store.game.cells[2] === store.game.cells[4] && store.game.cells[2] === store.game.cells[6] && store.game.cells[2] !== '') {
+      $('#win-message').text(`GAME OVER!! Congratulations, ${store.game.cells[2]} is the winner!!`).show()
+      return true
+    // } else if (gameBoard.every(??) !== '') {
+    //   console.log('Tie')
+    //   store.game.over = true
+
+    // In the event of a TIE...
+    } else if (store.game.cells[0] !== '' && store.game.cells[1] !== '' && store.game.cells[2] !== '' && store.game.cells[3] !== '' && store.game.cells[4] !== '' && store.game.cells[5] !== '' && store.game.cells[6] !== '' && store.game.cells[7] !== '' && store.game.cells[8] !== '') {
+      // console.log('Tie!')
+      $('#win-message').text(`It's a tie!! Nobody wins, everybody loses!!`).show()
+      return true
+    } else {
+      // if none of these conditions are true, return false and keep playing
+      return false
+    }
   }
 }
 

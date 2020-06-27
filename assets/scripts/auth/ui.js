@@ -47,6 +47,7 @@ const signOutSuccess = function () {
   $('.hidden-settings').toggle()
   $('.box').text('')
   $('#win-message').hide()
+  $('#game-board').addClass('hide-game')
   $('.game-index-qty').html('')
   $('.game-index').html('')
   store.user = null
