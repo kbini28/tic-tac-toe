@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>It's Super Awesome Game Time!!</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <!-- Do not add `link` tags-->
+      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+      <!-- Do not add `script` tags-->
+      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+    </head>
+    <body>
+      <div class="col-12 display-message">
+      <p id="message"> </p>
+      </div>
+
+      <section id="logged-out-view">
+        <h1>Welcome to Tic-Tac-Toe!</h1>
+
+        <div class="two-column-flex">
+          <form id="sign-up">
+            <h2>Sign up below:</h2>
+            <input type="email" name="credentials[email]" required placeholder="Email">
+            <input type="password" name="credentials[password]" required placeholder="Password">
+            <input type="password" name="credentials[password_confirmation]" required placeholder="Confirm Password">
+            <button type="submit">Submit</button>
+          </form>
+          <form id="sign-in">
+            <h2>Or sign in over here:</h2>
+            <input type="email" name="credentials[email]" required placeholder="Email">
+            <input type="password" name="credentials[password]" required placeholder="Password">
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+      </section>
+
+      <main>
+        <section id="logged-in-view" class="hidden">
+          <div>
+            <button id="settings">Settings</button>
+          </div>
+          <form id="change-password" class="hidden-settings">
+            <h3>Change your password:</h3>
+            <input type="password" name="passwords[old]" required placeholder="Old Password">
+            <input type="password" name="passwords[new]" required placeholder="New Password"> <br>
+            <button type="submit">Change Password</button>
+          </form>
+          <div id="sign-out" class="hidden-settings">
+            <button>Sign Out</button>
+          </div>
+        </section>
+
+        <div id="new-game" class="hidden new-game">
+          <button type="submit">New Game!</button>
+        </div>
+        <!-- does this ^ need to be a form? -->
+
+        <section id="game-board" class="hide-game container">
+          <p id="win-message" class="col-12"></p>
+          <div class="row">
+            <div class="col-4 box" data-cell-index="0"></div>
+            <div class="col-4 box border-left border-right" data-cell-index="1"></div>
+            <div class="col-4 box" data-cell-index="2"></div>
+            <div class="col-4 box border-top border-bottom" data-cell-index="3"></div>
+            <div class="col-4 box border" data-cell-index="4"></div>
+            <div class="col-4 box border-top border-bottom" data-cell-index="5"></div>
+            <div class="col-4 box" data-cell-index="6"></div>
+            <div class="col-4 box border-left border-right" data-cell-index="7"></div>
+            <div class="col-4 box" data-cell-index="8"></div>
+          </div>
+        </section>
+
+        <section class="show-game-index">
+          <!-- <form id="show-game" class="hidden">
+            <input type="text" name="show-game" placeholder="Find game by ID">
+            <button type="submit">Find Game</button>
+          </form> -->
+          <div id="game-index" class="hidden">
+            <button type="submit">Show All Games</button>
+            <p class="game-index-qty"></p>
+            <p class="game-index"></p>
+          </div>
+        </section>
+      </main>
+    </body>
+</html>
